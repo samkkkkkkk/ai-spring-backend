@@ -4,6 +4,7 @@ import com.example.aibackend.domain.Book;
 import com.example.aibackend.dto.BookRequest;
 import com.example.aibackend.dto.BookResponse;
 import com.example.aibackend.error.NotFoundException;
+import com.example.aibackend.service.BookService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -21,20 +22,19 @@ public class BookController {
 
     private final Map<Long, Book> storage = new ConcurrentHashMap<>();
     private final AtomicLong sequence = new AtomicLong(1);
+    private final BookService bookService;
 
     @GetMapping
     public ResponseEntity<List<BookResponse>> getList() {
-        List<BookResponse> bookList = storage.values().stream().map(BookResponse::from).toList();
-        return ResponseEntity.ok().body(bookList);
+
+        return ResponseEntity.ok().body(bookService.getList());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<BookResponse> get(@PathVariable Long id) {
-        Book book = storage.get(id);
-        if (book == null) {
-            throw new NotFoundException("책이 존재하지 않습니다.");
-        }
-        return ResponseEntity.ok().body(BookResponse.from(book));
+
+        BookResponse response = bookService.get(id);
+        return ResponseEntity.ok().body(response);
     }
 
     @PostMapping
