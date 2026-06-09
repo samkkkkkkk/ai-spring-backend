@@ -16,7 +16,7 @@ spring:
               - openid
               - email
               - profile
-        provider:
+        provider: # ← 추가
           google:
             authorization-uri: https://accounts.google.com/o/oauth2/v2/auth?prompt=consent
 

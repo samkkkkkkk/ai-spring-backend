@@ -1,16 +1,14 @@
 package com.example.aibackend.controller;
 
 
-import com.example.aibackend.domain.ChatLog;
-import com.example.aibackend.dto.ChatLogRequest;
 import com.example.aibackend.dto.ChatLogResponse;
 import com.example.aibackend.service.ChatLogService;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.net.URI;
 import java.util.List;
 
 @RestController
@@ -44,10 +42,4 @@ public class ChatLogController {
                 .toList();
     }
 
-    @PostMapping
-    public ResponseEntity<ChatLogResponse> create(@Valid @RequestBody ChatLogRequest req) {
-        ChatLog saved = chatLogService.save(req.userId(), req.prompt(), req.response());
-        URI location = URI.create("/chat-logs/" + saved.getId());
-        return ResponseEntity.created(location).body(ChatLogResponse.from(saved));
-    }
 }
