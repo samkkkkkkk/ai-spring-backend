@@ -1,5 +1,6 @@
 package com.example.aibackend.repository;
 
+
 import com.example.aibackend.domain.ChatLog;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -18,5 +19,4 @@ public interface ChatLogRepository extends JpaRepository<ChatLog, Long> {
           order by c.createdAt desc
           """)
     List<ChatLog> findByUserIdWithUser(Long userId);
-
 }

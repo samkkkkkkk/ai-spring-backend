@@ -1,5 +1,6 @@
 package com.example.aibackend.service;
 
+
 import com.example.aibackend.domain.ChatLog;
 import com.example.aibackend.domain.User;
 import com.example.aibackend.error.NotFoundException;

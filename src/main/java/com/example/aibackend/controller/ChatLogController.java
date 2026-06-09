@@ -1,5 +1,6 @@
 package com.example.aibackend.controller;
 
+
 import com.example.aibackend.domain.ChatLog;
 import com.example.aibackend.dto.ChatLogRequest;
 import com.example.aibackend.dto.ChatLogResponse;

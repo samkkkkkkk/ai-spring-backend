@@ -1,5 +1,6 @@
 package com.example.aibackend.service;
 
+
 import com.example.aibackend.domain.User;
 import com.example.aibackend.repository.UserRepository;
 import lombok.RequiredArgsConstructor;

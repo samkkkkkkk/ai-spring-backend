@@ -1,5 +1,7 @@
 package com.example.aibackend.dto;
 
+
+
 import com.example.aibackend.domain.ChatLog;
 
 import java.time.LocalDateTime;
